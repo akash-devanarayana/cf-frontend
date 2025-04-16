@@ -1,4 +1,4 @@
-/node_modules
+/cypress/node_modules
 
 cypress/package-lock.json
 .idea
