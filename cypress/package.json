@@ -1,20 +1,19 @@
 {
-  "name": "healing-poc",
+  "name": "cf-frontend",
+  "author": "Akash Devanarayana",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "cy:open": "cypress open",
-    "http-server": "http-server -p 3000"
+    "cy:open": "cypress open"
   },
   "private": true,
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "cypress": "^14.2.1",
-    "eslint": "^9.23.0"
+    "cypress": "14.0.0",
+    "eslint": "9.23.0"
   }
 }
