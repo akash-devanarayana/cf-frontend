@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Selector Healing POC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .header {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+        }
+
+        .input-field {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .submit-button {
+            background-color: #4285f4;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .product-list {
+            margin-top: 30px;
+        }
+
+        .product-item {
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .version-switcher {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="version-switcher">
+        <button class="action-btn" id="switch-version">Switch to Version 2 (Change Selectors)</button>
+    </div>
+
+    <div class="header">
+        <h1>Test Application</h1>
+        <p>This is a simple page to demonstrate selector healing</p>
+    </div>
+
+    <div id="login-section">
+        <h2>Login</h2>
+        <form class="login-form">
+            <input class="input-field" id="username" placeholder="Username" type="text">
+            <input class="input-field" id="password" placeholder="Password" type="password">
+            <button class="submit-button" type="button">Log In</button>
+        </form>
+    </div>
+
+    <div class="product-list">
+        <h2>Products</h2>
+        <div class="product-item" id="product-1">
+            <h3>Product A</h3>
+            <p>This is a description for Product A</p>
+            <button class="action-btn product-action">Add to Cart</button>
+        </div>
+        <div class="product-item" id="product-2">
+            <h3>Product B</h3>
+            <p>This is a description for Product B</p>
+            <button class="action-btn product-action">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button class="action-btn" id="checkout-btn">Checkout</button>
+        <button class="action-btn" id="clear-cart">Clear Cart</button>
+    </div>
+</div>
+
+<script>
+    // Script to simulate UI changes that would break selectors
+    document.getElementById('switch-version').addEventListener('click', function () {
+        // Change login form
+        const loginForm = document.querySelector('.login-form');
+        loginForm.classList.remove('login-form');
+        loginForm.classList.add('user-form');
+
+        // Change submit button
+        const submitButton = document.querySelector('.submit-button');
+        submitButton.classList.remove('submit-button');
+        submitButton.classList.add('btn-primary');
+
+        // Change product items
+        const productItems = document.querySelectorAll('.product-item');
+        productItems.forEach(item => {
+            item.classList.remove('product-item');
+            item.classList.add('catalog-item');
+        });
+
+        // Change action buttons
+        const actionButtons = document.querySelectorAll('.action-btn');
+        actionButtons.forEach(btn => {
+            btn.classList.remove('action-btn');
+            btn.classList.add('ui-button');
+        });
+
+        // Update button text
+        this.textContent = 'Version 2 Active (Selectors Changed)';
+        this.disabled = true;
+
+        // Add notification
+        const notification = document.createElement('div');
+        notification.style.backgroundColor = '#ffd700';
+        notification.style.padding = '10px';
+        notification.style.marginTop = '20px';
+        notification.style.borderRadius = '4px';
+        notification.innerHTML = '<strong>UI Updated!</strong> The selectors have been changed, which would normally break Cypress tests.';
+        document.querySelector('.container').appendChild(notification);
+    });
+</script>
+</body>
+</html>

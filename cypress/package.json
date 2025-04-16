@@ -1,0 +1,20 @@
+{
+  "name": "healing-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "cy:open": "cypress open",
+    "http-server": "http-server -p 3000"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^14.2.1",
+    "eslint": "^9.23.0"
+  }
+}
